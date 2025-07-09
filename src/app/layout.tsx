@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Birthstone, Open_Sans } from "next/font/google";
+import { Birthstone, Open_Sans } from "next/font/google";
 import "./globals.css";
 
 const openSans = Open_Sans({

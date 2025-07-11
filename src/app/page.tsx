@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { MenuOutlined } from "@ant-design/icons";
 import { Drawer, Button } from "antd";
 import { useRouter } from "next/navigation";
-
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Home() {
@@ -29,126 +29,135 @@ export default function Home() {
     <main>
       {/* Header */}
       <header className="sticky top-0 z-50 flex items-center justify-between py-4 px-4 bg-white">
-        <div className="flex items-center gap-3">
-          <div className="relative w-10 h-10 sm:w-12 sm:h-12">
-            <Image
-              src="/images/logo.png"
-              alt=""
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div
-            className="text-4xl sm:text-5xl font-bold"
-            style={{ fontFamily: "var(--font-birthstone)" }}
-          >
-            May Blossom Spa
-          </div>
-        </div>
-
-        {isMobile ? (
-          <>
-            <Button
-              type="text"
-              icon={<MenuOutlined style={{ fontSize: 24 }} />}
-              onClick={() => setDrawerOpen(true)}
-            />
-            <Drawer
-              title=""
-              placement="top"
-              onClose={() => setDrawerOpen(false)}
-              open={drawerOpen}
+        <div className="w-full max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12">
+              <Image
+                src="/images/logo.png"
+                alt=""
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div
+              className="text-4xl sm:text-5xl font-bold"
+              style={{ fontFamily: "var(--font-birthstone)" }}
             >
-              <div
-                className="flex flex-col space-y-8 text-lg font-semibold"
-                style={{ fontFamily: "var(--font-open-sans)" }}
+              May Blossom Spa
+            </div>
+          </div>
+
+          {isMobile ? (
+            <>
+              <Button
+                type="text"
+                icon={<MenuOutlined style={{ fontSize: 24 }} />}
+                onClick={() => setDrawerOpen(true)}
+              />
+              <Drawer
+                title=""
+                placement="top"
+                onClose={() => setDrawerOpen(false)}
+                open={drawerOpen}
               >
-                <button
-                  onClick={() => handleNavigate("/")}
-                  className="text-left"
+                <div
+                  className="flex flex-col space-y-8 text-lg font-semibold"
+                  style={{ fontFamily: "var(--font-open-sans)" }}
                 >
-                  Home
-                </button>
-                <button
-                  onClick={() => handleNavigate("/about")}
-                  className="text-left"
-                >
-                  About
-                </button>
-                <button
-                  onClick={() => handleNavigate("/services")}
-                  className="text-left"
-                >
-                  Services
-                </button>
-                <button
-                  onClick={() => handleNavigate("/location")}
-                  className="text-left"
-                >
-                  Location
-                </button>
-              </div>
-            </Drawer>
-          </>
-        ) : (
-          <nav
-            className="flex space-x-6 text-lg"
-            style={{ fontFamily: "var(--font-open-sans)" }}
-          >
-            <a href="#" className="hover:underline">
-              Home
-            </a>
-            <a href="#" className="hover:underline">
-              Book
-            </a>
-            <a href="#" className="hover:underline">
-              About
-            </a>
-            <a href="#" className="hover:underline">
-              Services
-            </a>
-            <a href="#" className="hover:underline">
-              Locations
-            </a>
-          </nav>
-        )}
+                  <button
+                    onClick={() => handleNavigate("/about")}
+                    className="text-left"
+                  >
+                    About
+                  </button>
+                  <button
+                    onClick={() => handleNavigate("/services")}
+                    className="text-left"
+                  >
+                    Services
+                  </button>
+                  <button
+                    onClick={() => handleNavigate("/location")}
+                    className="text-left"
+                  >
+                    Location
+                  </button>
+                </div>
+              </Drawer>
+            </>
+          ) : (
+            <nav
+              className="flex space-x-6 text-lg"
+              style={{ fontFamily: "var(--font-open-sans)" }}
+            >
+              <button
+                onClick={() => handleNavigate("/about")}
+                className="text-left"
+              >
+                Book now
+              </button>
+              <button
+                onClick={() => handleNavigate("/about")}
+                className="text-left"
+              >
+                About
+              </button>
+              <button
+                onClick={() => handleNavigate("/services")}
+                className="text-left"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => handleNavigate("/location")}
+                className="text-left"
+              >
+                Location
+              </button>
+            </nav>
+          )}
+        </div>
       </header>
 
       {/* Content */}
-      <section className="relative  bg-black">
-        {/* Image */}
-        <div className="w-full h-60 sm:h-[350px]">
-          <Image
-            src="/images/banner.jpeg"
-            alt="A beautiful blossom"
-            fill
-            className="object-cover object-right"
-            priority
-          />
-        </div>
+      {/* Image */}
+      <section className="relative w-full">
+        <Image
+          src="/images/banner.jpeg"
+          alt="..."
+          width={1280}
+          height={644}
+          className="w-full h-auto object-contain"
+        />
 
-        {/* Overlay content */}
-        <div className="absolute inset-0 flex items-center justify-start px-4 sm:px-6 ">
-          <div className="py-6 sm:py-8 pl-2 sm:pl-6 rounded-lg w-5/8 sm:w-2/5 sm:space-y-6 md:space-y-6 space-y-4">
-            <h1
-              className="text-lg sm:text-2xl md:text-3xl font-bold "
-              style={{ fontFamily: "var(--font-open-sans)" }}
-            >
-              Relax and Rejuvenate
-            </h1>
-            <p
-              className=" text-sm md:text-base sm:text-sm font-semibold "
-              style={{ fontFamily: "var(--font-open-sans)" }}
-            >
-              Founded in 2010, May Blossom Spa has grown to six locations across
-              the GTA.
-            </p>
-            <button
-              className="hover:cursor-pointer bg-yellow-400 hover:bg-yellow-500  font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-full"
-              style={{ fontFamily: "var(--font-open-sans)" }}
-            >
-              Book Now
-            </button>
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent pointer-events-none" />
+
+        {/* Text overlay with centered max-width */}
+        <div className="absolute z-40 inset-0 flex items-center justify-start px-4 sm:px-6">
+          <div className="w-full max-w-7xl mx-auto flex items-center justify-start">
+            <div className="py-6 sm:py-8 pl-2 sm:pl-6 w-full sm:w-3/5 md:w-3/7 lg:w-3/7 space-y-4 sm:space-y-6 md:space-y-6 text-white">
+              <h1
+                className=" sm:text-3xl md:text-4xl lg:text-6xl font-bold"
+                style={{ fontFamily: "var(--font-lora)" }}
+              >
+                Relax and Rejuvenate at May Blossom Spa
+              </h1>
+              <p
+                className="text-sm sm:text-sm md:text-base "
+                style={{ fontFamily: "var(--font-open-sans)" }}
+              >
+                A place where you can unwind, indulge, and renew yourself. Where
+                exceptional service, skilled professionals and personalized care
+                are at the heart of everything we do.
+              </p>
+              <button
+                className="hover:cursor-pointer bg-yellow-500 hover:bg-yellow-500 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
+                style={{ fontFamily: "var(--font-open-sans)" }}
+              >
+                Book Now
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -215,7 +224,79 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="max-w-5xl mx-auto px-4 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row items-center gap-8"
+        >
+          {/* Text */}
+          <div className="md:w-1/2 space-y-4 text-center md:text-left">
+            <h2
+              className="text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: "var(--font-birthstone)" }}
+            >
+              Experience Tranquility
+            </h2>
+            <p className="text-gray-700 text-lg">
+              Discover a haven of relaxation with personalized treatments that
+              restore balance to your body and mind.
+            </p>
+          </div>
+          {/* Image */}
+          <div className="md:w-1/2">
+            <Image
+              src="/images/image1.jpeg"
+              alt="Relaxing spa"
+              width={600}
+              height={400}
+              className="rounded-3xl shadow-lg"
+            />
+          </div>
+        </motion.div>
+      </section>
 
+      <section className="max-w-5xl mx-auto px-4 py-16">
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row-reverse items-center gap-8"
+        >
+          {/* Text */}
+          <div className="md:w-1/2 space-y-4 text-center md:text-left">
+            <h2
+              className="text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: "var(--font-birthstone)" }}
+            >
+              Grand Opening Offers
+            </h2>
+            <p className="text-gray-700 text-lg">
+              Celebrate our expansion with 15% off all services from July 9 to
+              July 31 at all 6 GTA locations.
+            </p>
+          </div>
+          {/* Image */}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="md:w-1/2"
+          >
+            <Image
+              src="/images/banner.jpeg"
+              alt="Spa treatment"
+              width={600}
+              height={400}
+              className="rounded-3xl shadow-xl"
+            />
+          </motion.div>
+        </motion.div>
+      </section>
       <div className="w-full h-[400px]">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2005.722503368683!2d-79.30815323486394!3d43.82700802548296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d40be39ea2bf%3A0xd4f6e9007fca8402!2s7077%20Kennedy%20Rd%2C%20Markham%2C%20ON%20L3R%200N8!5e0!3m2!1sen!2sca!4v1752020035326!5m2!1sen!2sca"

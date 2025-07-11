@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Birthstone, Open_Sans } from "next/font/google";
+import { Birthstone, Open_Sans, Lora } from "next/font/google";
 import "./globals.css";
 
 const openSans = Open_Sans({
@@ -12,6 +12,12 @@ const birthStone = Birthstone({
   variable: "--font-birthstone",
   subsets: ["latin"],
   weight: "400",
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-lora",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${openSans.variable} ${birthStone.variable} antialiased`}
+        className={`${openSans.variable} ${birthStone.variable} ${lora.variable} antialiased`}
       >
         {children}
       </body>

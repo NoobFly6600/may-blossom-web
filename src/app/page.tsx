@@ -134,7 +134,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent pointer-events-none" />
 
         {/* Text overlay with centered max-width */}
-        <div className="absolute z-40 inset-0 flex items-center justify-start px-4 sm:px-6">
+        <div className="absolute lg:pb-25 z-40 inset-0 flex items-center justify-start px-4 sm:px-6">
           <div className="w-full max-w-7xl mx-auto flex items-center justify-start">
             <div className="py-6 sm:py-8 pl-2 sm:pl-6 w-full sm:w-3/5 md:w-3/7 lg:w-3/7 space-y-4 sm:space-y-6 md:space-y-6 text-white">
               <h1
@@ -152,7 +152,7 @@ export default function Home() {
                 are at the heart of everything we do.
               </p>
               <button
-                className="hover:cursor-pointer bg-yellow-500 hover:bg-yellow-500 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
+                className="hover:cursor-pointer text-base lg:text-2xl bg-yellow-500 hover:bg-yellow-500 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
                 style={{ fontFamily: "var(--font-open-sans)" }}
               >
                 Book Now
@@ -162,141 +162,110 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-purple-50 flex flex-col space-y-12 px-4 py-12 px-5 sm:px-40">
-        {/* Row 1 */}
-        <div className="flex flex-col md:flex-row items-center md:space-x-6 space-y-2 md:space-y-0">
-          {/* Text */}
-          <div className="md:w-1/2 text-center md:text-left space-y-4">
-            <h2
-              className="text-3xl sm:text-5xl font-bold"
-              style={{ fontFamily: "var(--font-birthstone)" }}
-            >
-              Grand Opening Offer
-            </h2>
-            <p className="text-gray-700 text-lg">
-              Celebrate the grand opening of May Blossom Spa with us! Enjoy 15%
-              off all services from July 9 to July 31 as we welcome you to
-              experience relaxation and rejuvenation in our new space.
-            </p>
-          </div>
-          {/* Image */}
-          <div className="md:w-1/2 w-full  flex items-center justify-center">
-            <Image
-              src="/images/image1.jpeg"
-              alt="A beautiful blossom"
-              width={418}
-              height={542}
-              className="max-w-full h-auto rounded-2xl"
-              priority
-            />
-          </div>
-        </div>
-
-        {/* Row 2 */}
-        <div className="flex flex-col md:flex-row-reverse items-center md:space-x-8 md:space-x-reverse space-y-4 md:space-y-0">
-          {/* Text */}
-          <div className="md:w-1/2 text-center md:text-left space-y-4">
-            <h2
-              className="text-3xl sm:text-5xl font-bold"
-              style={{ fontFamily: "var(--font-birthstone)" }}
-            >
-              Weekend Specials
-            </h2>
-            <p className="text-gray-700 text-lg ">
-              Treat yourself this weekend with our limited-time special: enjoy a
-              relaxing 30-minute foot massage plus a 10-minute shoulder massage
-              for only $39.99 (regularly $45). Unwind and recharge at May
-              Blossom Spa, and make your weekends a time for self-care and
-              renewal.
-            </p>
-          </div>
-
-          {/* Image */}
-          <div className="md:w-1/2 w-full flex items-center justify-center">
-            <Image
-              src="/images/image2.jpeg"
-              alt="A beautiful blossom"
-              width={418}
-              height={542}
-              className="max-w-full h-auto rounded-3xl"
-              priority
-            />
-          </div>
-        </div>
-      </section>
-      <section className="max-w-5xl mx-auto px-4 py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="flex flex-col md:flex-row items-center gap-8"
-        >
-          {/* Text */}
-          <div className="md:w-1/2 space-y-4 text-center md:text-left">
-            <h2
-              className="text-3xl md:text-4xl font-bold"
-              style={{ fontFamily: "var(--font-birthstone)" }}
-            >
-              Experience Tranquility
-            </h2>
-            <p className="text-gray-700 text-lg">
-              Discover a haven of relaxation with personalized treatments that
-              restore balance to your body and mind.
-            </p>
-          </div>
-          {/* Image */}
-          <div className="md:w-1/2">
-            <Image
-              src="/images/image1.jpeg"
-              alt="Relaxing spa"
-              width={600}
-              height={400}
-              className="rounded-3xl shadow-lg"
-            />
-          </div>
-        </motion.div>
-      </section>
-
-      <section className="max-w-5xl mx-auto px-4 py-16">
-        <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="flex flex-col md:flex-row-reverse items-center gap-8"
-        >
-          {/* Text */}
-          <div className="md:w-1/2 space-y-4 text-center md:text-left">
-            <h2
-              className="text-3xl md:text-4xl font-bold"
-              style={{ fontFamily: "var(--font-birthstone)" }}
-            >
-              Grand Opening Offers
-            </h2>
-            <p className="text-gray-700 text-lg">
-              Celebrate our expansion with 15% off all services from July 9 to
-              July 31 at all 6 GTA locations.
-            </p>
-          </div>
-          {/* Image */}
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="md:w-1/2"
+      <section className="w-full bg-purple-50 py-12 lg:py-24 px-4">
+        <div className="max-w-7xl mx-auto flex flex-col items-center space-y-12">
+          {/* Centered Title */}
+          <h2
+            className="text-4xl sm:text-5xl font-bold text-center"
+            style={{ fontFamily: "var(--font-lora)" }}
           >
-            <Image
-              src="/images/banner.jpeg"
-              alt="Spa treatment"
-              width={600}
-              height={400}
-              className="rounded-3xl shadow-xl"
-            />
-          </motion.div>
-        </motion.div>
+            Promotion
+          </h2>
+
+          {/* Content: Images and Text */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full">
+            {/* Left: Animated Images */}
+            <div className="flex flex-col md:flex-row gap-4 md:w-1/2 w-full justify-center items-center">
+              {/* Image 1 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                viewport={{ once: true }}
+                className="shadow-xl rounded-2xl overflow-hidden max-w-xs md:max-w-sm"
+              >
+                <Image
+                  src="/images/image1.jpeg"
+                  alt="A beautiful blossom"
+                  width={1045}
+                  height={1357}
+                  className=" rounded-lg "
+                  priority
+                />
+              </motion.div>
+
+              {/* Image 2 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+                viewport={{ once: true }}
+                className="shadow-xl rounded-2xl overflow-hidden max-w-xs md:max-w-sm"
+              >
+                <Image
+                  src="/images/image2.jpeg"
+                  alt="A beautiful blossom"
+                  width={1045}
+                  height={1357}
+                  className=" rounded-lg "
+                  priority
+                />
+              </motion.div>
+            </div>
+            {/* Right: Promotional Texts */}
+            <div className="flex flex-col space-y-8 md:w-1/2 w-full text-center md:text-left">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                viewport={{ once: true }}
+                className="space-y-4"
+              >
+                <h3
+                  className="text-3xl sm:text-4xl font-bold"
+                  style={{ fontFamily: "var(--font-lora)" }}
+                >
+                  Grand Opening Offer
+                </h3>
+                <p
+                  className="text-gray-800 text-lg"
+                  style={{ fontFamily: "var(--font-lora)" }}
+                >
+                  Celebrate the grand opening of May Blossom Spa with us! Enjoy
+                  15% off all services from July 9 to July 31 as we welcome you
+                  to experience relaxation and rejuvenation in our new space.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+                viewport={{ once: true }}
+                className="space-y-4"
+              >
+                <h3
+                  className="text-3xl sm:text-4xl font-bold"
+                  style={{ fontFamily: "var(--font-lora)" }}
+                >
+                  Weekend Specials
+                </h3>
+                <p
+                  className="text-gray-800 text-lg"
+                  style={{ fontFamily: "var(--font-lora)" }}
+                >
+                  Treat yourself this weekend with our limited-time special:
+                  enjoy a relaxing 30-minute foot massage plus a 10-minute
+                  shoulder massage for only $39.99 (regularly $45). Unwind and
+                  recharge at May Blossom Spa, and make your weekends a time for
+                  self-care and renewal.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
       </section>
+
       <div className="w-full h-[400px]">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2005.722503368683!2d-79.30815323486394!3d43.82700802548296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d40be39ea2bf%3A0xd4f6e9007fca8402!2s7077%20Kennedy%20Rd%2C%20Markham%2C%20ON%20L3R%200N8!5e0!3m2!1sen!2sca!4v1752020035326!5m2!1sen!2sca"

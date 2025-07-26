@@ -169,9 +169,24 @@ export default function Home() {
             className="text-4xl sm:text-5xl font-bold text-center"
             style={{ fontFamily: "var(--font-lora)" }}
           >
-            Promotion
+            Good News
           </h2>
-
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="shadow-xl rounded-2xl overflow-hidden "
+          >
+            <Image
+              src="/images/banner1.jpeg"
+              alt="A beautiful blossom"
+              width={2506}
+              height={625}
+              className=" rounded-lg "
+              priority
+            />
+          </motion.div>
           {/* Content: Images and Text */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full">
             {/* Left: Animated Images */}
@@ -180,7 +195,7 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
                 viewport={{ once: true }}
                 className="shadow-xl rounded-2xl overflow-hidden max-w-xs md:max-w-sm"
               >
@@ -198,7 +213,7 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
                 viewport={{ once: true }}
                 className="shadow-xl rounded-2xl overflow-hidden max-w-xs md:max-w-sm"
               >
@@ -213,11 +228,11 @@ export default function Home() {
               </motion.div>
             </div>
             {/* Right: Promotional Texts */}
-            <div className="flex flex-col space-y-8 md:w-1/2 w-full text-center md:text-left">
+            <div className="flex flex-col space-y-14 md:w-1/2 w-full text-center md:text-left">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
                 viewport={{ once: true }}
                 className="space-y-4"
               >
@@ -240,7 +255,7 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
                 viewport={{ once: true }}
                 className="space-y-4"
               >

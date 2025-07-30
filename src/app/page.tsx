@@ -1,21 +1,75 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MenuOutlined } from "@ant-design/icons";
 import { Drawer, Button } from "antd";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { LuHeartHandshake } from "react-icons/lu";
+import { GiFootprint } from "react-icons/gi";
+import { TbMassage } from "react-icons/tb";
+import { TbMoodSpark } from "react-icons/tb";
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const router = useRouter();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  const items = [
+    {
+      icon: <TbMassage />,
+      title: "Massage",
+      text: "Relax, recover, and recharge with a customized massage tailored to your specific needs by a skilled therapist.",
+    },
+    {
+      icon: <GiFootprint />,
+      title: "Foot Massage",
+      text: "Soothe tired feet and restore balance with targeted foot massage techniques that melt away tension.",
+    },
+    {
+      icon: <LuHeartHandshake />,
+      title: "Body Care",
+      text: "Enhance your wellness routine with advanced services like Total Body Stretch and Rapid Tension Relief.",
+    },
+    {
+      icon: <TbMoodSpark />,
+      title: "Facials",
+      text: "Achieve your skin goals with personalized facials and treatments designed for visible, lasting results.",
+    },
+  ];
 
   const handleNavigate = (path: string) => {
     setDrawerOpen(false);
     router.push(path);
   };
+
+  const cards = [
+    {
+      title: "Summer Specials",
+      headline: "Chill vibes, hot deals",
+      description:
+        "Enjoy exclusive summer discounts on your favorite experiences. Limited time only.",
+      image: "/images/card-image1.jpg",
+    },
+    {
+      title: "Wellness Retreat",
+      headline: "Relax. Recharge. Renew.",
+      description:
+        "Escape the hustle and find peace with our curated wellness programs.",
+      image: "/images/card-image2.jpeg",
+    },
+    {
+      title: "Dining Delights",
+      headline: "Flavors worth savoring",
+      description:
+        "Discover the best local cuisines with our hand-picked dining options.",
+      image: "/images/card-image3.jpeg",
+    },
+  ];
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -24,14 +78,28 @@ export default function Home() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!scrollRef.current) return;
+      const children = scrollRef.current.children;
+      const scrollLeft = scrollRef.current.scrollLeft;
+      const cardWidth = children[0].clientWidth + (isMobile ? 12 : 24); // includes gap
+      const index = Math.round(scrollLeft / cardWidth);
+      setCurrentIndex(index);
+    };
+
+    const ref = scrollRef.current;
+    ref?.addEventListener("scroll", handleScroll);
+    return () => ref?.removeEventListener("scroll", handleScroll);
+  }, [isMobile]);
 
   return (
     <main>
       {/* Header */}
       <header className="sticky top-0 z-50 flex items-center justify-between py-4 px-4 bg-white">
         <div className="w-full max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10 sm:w-12 sm:h-12">
+          <div className="flex items-center gap-1 sm:gap-3">
+            <div className="relative w-7 h-7 sm:w-12 sm:h-12">
               <Image
                 src="/images/logo.png"
                 alt=""
@@ -40,7 +108,7 @@ export default function Home() {
               />
             </div>
             <div
-              className="text-4xl sm:text-5xl font-bold"
+              className="text-3xl sm:text-5xl font-bold"
               style={{ fontFamily: "var(--font-birthstone)" }}
             >
               May Blossom Spa
@@ -49,11 +117,19 @@ export default function Home() {
 
           {isMobile ? (
             <>
-              <Button
-                type="text"
-                icon={<MenuOutlined style={{ fontSize: 24 }} />}
-                onClick={() => setDrawerOpen(true)}
-              />
+              <div className="flex items-center gap-3">
+                <button
+                  className="text-white text-base lg:text-2xl bg-purple-400 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
+                  style={{ fontFamily: "var(--font-open-sans)" }}
+                >
+                  Book
+                </button>
+                <Button
+                  type="text"
+                  icon={<MenuOutlined style={{ fontSize: 24 }} />}
+                  onClick={() => setDrawerOpen(true)}
+                />
+              </div>
               <Drawer
                 title=""
                 placement="top"
@@ -91,10 +167,10 @@ export default function Home() {
               style={{ fontFamily: "var(--font-open-sans)" }}
             >
               <button
-                onClick={() => handleNavigate("/about")}
-                className="text-left"
+                className="text-white hover:cursor-pointer text-base lg:text-lg bg-purple-400 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
+                style={{ fontFamily: "var(--font-open-sans)" }}
               >
-                Book now
+                Book Now
               </button>
               <button
                 onClick={() => handleNavigate("/about")}
@@ -118,9 +194,8 @@ export default function Home() {
           )}
         </div>
       </header>
-
       {/* Content */}
-      {/* Image */}
+
       <section className="relative w-full">
         <Image
           src="/images/banner.jpeg"
@@ -133,57 +208,181 @@ export default function Home() {
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent pointer-events-none" />
 
-        {/* Text overlay with centered max-width */}
-        <div className="absolute lg:pb-25 z-40 inset-0 flex items-center justify-start px-4 sm:px-6">
-          <div className="w-full max-w-7xl mx-auto flex items-center justify-start">
+        {/* Text overlay */}
+        <div className="absolute z-20 inset-0 px-4 sm:px-6">
+          <div
+            className="w-full max-w-7xl mx-auto relative"
+            style={{ top: isMobile ? "-5%" : "15%" }}
+          >
             <div className="py-6 sm:py-8 pl-2 sm:pl-6 w-full sm:w-3/5 md:w-3/7 lg:w-3/7 space-y-4 sm:space-y-6 md:space-y-6 text-white">
               <h1
-                className=" sm:text-3xl md:text-4xl lg:text-6xl font-bold"
+                className="text-2xl md:text-4xl lg:text-6xl font-bold"
                 style={{ fontFamily: "var(--font-lora)" }}
               >
                 Relax and Rejuvenate at May Blossom Spa
               </h1>
               <p
-                className="text-sm sm:text-sm md:text-base "
+                className="text-sm  sm:text-2xl"
                 style={{ fontFamily: "var(--font-open-sans)" }}
               >
                 A place where you can unwind, indulge, and renew yourself. Where
                 exceptional service, skilled professionals and personalized care
                 are at the heart of everything we do.
               </p>
-              <button
-                className="hover:cursor-pointer text-base lg:text-2xl bg-yellow-500 hover:bg-yellow-500 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
-                style={{ fontFamily: "var(--font-open-sans)" }}
-              >
-                Book Now
-              </button>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-purple-50 py-12 lg:py-24 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col items-center space-y-12">
-          {/* Centered Title */}
+      {/* Scrollable cards */}
+      <div
+        ref={scrollRef}
+        className="z-30 relative"
+        style={{
+          marginTop: isMobile ? "-10px" : "-120px",
+          display: "flex",
+          overflowX: "auto",
+          gap: isMobile ? 12 : 24,
+          padding: isMobile ? "0 12px" : "0 48px",
+          scrollSnapType: "x mandatory",
+          scrollPadding: isMobile ? "0 12px" : "0 48px",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            style={{
+              minWidth: isMobile ? "100%" : 640,
+              maxWidth: isMobile ? "100%" : undefined,
+              marginBottom: isMobile ? 14 : 24,
+              flexShrink: 0,
+              scrollSnapAlign: "center",
+              backgroundColor: "#fff",
+              borderRadius: 12,
+              overflow: "hidden",
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              height: isMobile ? 360 : 500,
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            {/* Content */}
+            <div
+              style={{
+                flex: isMobile ? "unset" : 2,
+                padding: isMobile ? 16 : 24,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <h4
+                style={{
+                  fontSize: isMobile ? 16 : 20,
+                  marginBottom: 4,
+                  color: "#888",
+                }}
+              >
+                {card.title}
+              </h4>
+              <h3
+                style={{
+                  fontSize: isMobile ? 20 : 28,
+                  fontWeight: "bold",
+                  marginBottom: 8,
+                }}
+              >
+                {card.headline}
+              </h3>
+              <p style={{ fontSize: isMobile ? 14 : 16, color: "#444" }}>
+                {card.description}
+              </p>
+            </div>
+
+            {/* Image */}
+            <div
+              style={{
+                height: "100%",
+                maxWidth: isMobile ? "100%" : 400, // <- Add this
+              }}
+            >
+              <img
+                src={card.image}
+                alt={card.title}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* Indicator Dots */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 20,
+        }}
+      >
+        {cards.map((_, index) => (
+          <div
+            key={index}
+            style={{
+              width: 40,
+              height: 8,
+              borderRadius: 25,
+              backgroundColor: index === currentIndex ? "#a78bfa" : "#ccc",
+              transition: "background-color 0.3s",
+            }}
+          />
+        ))}
+      </div>
+      <div className="max-w-screen-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 sm:gap-6 text-center px-4 pt-20 sm:pt-40 pb-10 sm:pb-30 ">
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center"
+            style={{ fontFamily: "var(--font-open-sans)" }}
+          >
+            <div className="text-7xl sm:text-7xl text-purple-400">
+              {item.icon}
+            </div>
+            <h3 className="text-lg sm:text-2xl font-bold mt-3">{item.title}</h3>
+            <p className="text-base sm:text-lg text-gray-600 mt-1">
+              {item.text}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Promotion */}
+      <section className="mt-10 sm:mt-20 w-full bg-purple-50 py-8 sm:py-12 px-4">
+        <div className="max-w-7xl mx-auto flex flex-col items-center space-y-8 sm:space-y-12">
           <h2
-            className="text-4xl sm:text-5xl font-bold text-center"
+            className="text-3xl sm:text-5xl font-bold text-center"
             style={{ fontFamily: "var(--font-lora)" }}
           >
-            Good News
+            Promotion
           </h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="shadow-xl rounded-2xl overflow-hidden "
+            className="shadow-xl rounded-lg overflow-hidden "
           >
             <Image
               src="/images/banner1.jpeg"
               alt="A beautiful blossom"
               width={2506}
               height={625}
-              className=" rounded-lg "
               priority
             />
           </motion.div>
@@ -197,14 +396,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
                 viewport={{ once: true }}
-                className="shadow-xl rounded-2xl overflow-hidden max-w-xs md:max-w-sm"
+                className="shadow-xl overflow-hidden w-full md:w-auto"
               >
                 <Image
                   src="/images/image1.jpeg"
                   alt="A beautiful blossom"
-                  width={1045}
-                  height={1357}
-                  className=" rounded-lg "
+                  width={1047}
+                  height={1358}
                   priority
                 />
               </motion.div>
@@ -215,14 +413,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
                 viewport={{ once: true }}
-                className="shadow-xl rounded-2xl overflow-hidden max-w-xs md:max-w-sm"
+                className="shadow-xl overflow-hidden w-full md:w-auto"
               >
                 <Image
                   src="/images/image2.jpeg"
                   alt="A beautiful blossom"
                   width={1045}
                   height={1357}
-                  className=" rounded-lg "
                   priority
                 />
               </motion.div>
@@ -292,7 +489,6 @@ export default function Home() {
           className=" border-0"
         ></iframe>
       </div>
-
       <footer className="bg-purple-50 text-gray-700 py-8 px-4">
         <div className="max-w-5xl mx-auto flex justify-center">
           <div className="text-xs text-gray-500 text-center">

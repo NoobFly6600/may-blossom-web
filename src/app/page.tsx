@@ -406,7 +406,7 @@ export default function Home() {
                 className="shadow-xl overflow-hidden w-full md:w-auto"
               >
                 <Image
-                  src="/images/image1.g"
+                  src="/images/image1.png"
                   alt="A beautiful blossom"
                   width={1047}
                   height={1358}

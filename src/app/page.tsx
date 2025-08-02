@@ -118,12 +118,15 @@ export default function Home() {
           {isMobile ? (
             <>
               <div className="flex items-center gap-3">
-                <button
-                  className="text-white text-base lg:text-2xl bg-purple-400 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
-                  style={{ fontFamily: "var(--font-open-sans)" }}
-                >
-                  Book
-                </button>
+                <a href="tel:9059448666">
+                  <button
+                    className="text-white text-base lg:text-2xl bg-purple-400 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
+                    style={{ fontFamily: "var(--font-open-sans)" }}
+                  >
+                    Book
+                  </button>
+                </a>
+
                 <Button
                   type="text"
                   icon={<MenuOutlined style={{ fontSize: 24 }} />}
@@ -166,12 +169,14 @@ export default function Home() {
               className="flex space-x-6 text-lg"
               style={{ fontFamily: "var(--font-open-sans)" }}
             >
-              <div
-                className="text-white  text-base lg:text-lg bg-purple-400 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
-                style={{ fontFamily: "var(--font-open-sans)" }}
-              >
-                905-944-8666
-              </div>
+              <a href="tel:9059448666">
+                <div
+                  className="text-white  text-base lg:text-lg bg-purple-400 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
+                  style={{ fontFamily: "var(--font-open-sans)" }}
+                >
+                  905-944-8666
+                </div>
+              </a>
               <button
                 onClick={() => handleNavigate("/about")}
                 className="text-left"
@@ -401,7 +406,7 @@ export default function Home() {
                 className="shadow-xl overflow-hidden w-full md:w-auto"
               >
                 <Image
-                  src="/images/image1.png"
+                  src="/images/image1.g"
                   alt="A beautiful blossom"
                   width={1047}
                   height={1358}

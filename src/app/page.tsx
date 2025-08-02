@@ -381,7 +381,7 @@ export default function Home() {
             className="shadow-xl rounded-lg overflow-hidden "
           >
             <Image
-              src="/images/banner.jpeg"
+              src="/images/banner1.jpeg"
               alt="A beautiful blossom"
               width={2506}
               height={625}

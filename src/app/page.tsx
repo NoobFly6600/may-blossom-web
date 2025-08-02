@@ -393,7 +393,7 @@ export default function Home() {
             {/* Left: Animated Images */}
             <div className="flex flex-col md:flex-row gap-4 md:w-1/2 w-full justify-center items-center">
               {/* Image 1 */}
-              {/* <motion.div
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -401,13 +401,13 @@ export default function Home() {
                 className="shadow-xl overflow-hidden w-full md:w-auto"
               >
                 <Image
-                  src="/images/image2.jpeg"
+                  src="/images/image1.png"
                   alt="A beautiful blossom"
                   width={1047}
                   height={1358}
                   priority
                 />
-              </motion.div> */}
+              </motion.div>
 
               {/* Image 2 */}
               <motion.div

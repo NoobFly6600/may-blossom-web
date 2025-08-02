@@ -55,10 +55,10 @@ export default function Home() {
       image: "/images/card-image1.jpg",
     },
     {
-      title: "Wellness Retreat",
-      headline: "Relax. Recharge. Renew.",
+      title: "Group Massage",
+      headline: "Relax Together, Save Together",
       description:
-        "Escape the hustle and find peace with our curated wellness programs.",
+        "Our spacious facility can accommodate group massages for up to 15 people. Groups of 5 or more enjoy a 10% discount—perfect for friends, families, and coworkers. Come unwind, bond, and feel rejuvenated together!",
       image: "/images/card-image2.jpeg",
     },
     {
@@ -166,12 +166,12 @@ export default function Home() {
               className="flex space-x-6 text-lg"
               style={{ fontFamily: "var(--font-open-sans)" }}
             >
-              <button
-                className="text-white hover:cursor-pointer text-base lg:text-lg bg-purple-400 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
+              <div
+                className="text-white  text-base lg:text-lg bg-purple-400 font-semibold sm:px-4 sm:py-2 px-3 py-1.5 rounded-lg"
                 style={{ fontFamily: "var(--font-open-sans)" }}
               >
-                Book Now
-              </button>
+                905-944-8666
+              </div>
               <button
                 onClick={() => handleNavigate("/about")}
                 className="text-left"
@@ -254,8 +254,7 @@ export default function Home() {
           <div
             key={index}
             style={{
-              minWidth: isMobile ? "100%" : 640,
-              maxWidth: isMobile ? "100%" : undefined,
+              width: isMobile ? "100%" : 1000,
               marginBottom: isMobile ? 14 : 24,
               flexShrink: 0,
               scrollSnapAlign: "center",
@@ -277,22 +276,25 @@ export default function Home() {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
+                textAlign: "center",
               }}
             >
               <h4
                 style={{
-                  fontSize: isMobile ? 16 : 20,
-                  marginBottom: 4,
-                  color: "#888",
+                  fontSize: isMobile ? 20 : 28,
+                  fontWeight: "bold",
+                  marginBottom: 8,
                 }}
               >
                 {card.title}
               </h4>
               <h3
                 style={{
-                  fontSize: isMobile ? 20 : 28,
-                  fontWeight: "bold",
-                  marginBottom: 8,
+                  fontSize: isMobile ? 16 : 20,
+                  marginBottom: 4,
+                  color: "#888",
+                  paddingTop: 20,
+                  paddingBottom: 10,
                 }}
               >
                 {card.headline}
@@ -379,7 +381,7 @@ export default function Home() {
             className="shadow-xl rounded-lg overflow-hidden "
           >
             <Image
-              src="/images/banner1.jpeg"
+              src="/images/banner.jpeg"
               alt="A beautiful blossom"
               width={2506}
               height={625}
@@ -391,7 +393,7 @@ export default function Home() {
             {/* Left: Animated Images */}
             <div className="flex flex-col md:flex-row gap-4 md:w-1/2 w-full justify-center items-center">
               {/* Image 1 */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -399,13 +401,13 @@ export default function Home() {
                 className="shadow-xl overflow-hidden w-full md:w-auto"
               >
                 <Image
-                  src="/images/image1.jpeg"
+                  src="/images/image2.jpeg"
                   alt="A beautiful blossom"
                   width={1047}
                   height={1358}
                   priority
                 />
-              </motion.div>
+              </motion.div> */}
 
               {/* Image 2 */}
               <motion.div
@@ -437,15 +439,15 @@ export default function Home() {
                   className="text-3xl sm:text-4xl font-bold"
                   style={{ fontFamily: "var(--font-lora)" }}
                 >
-                  Grand Opening Offer
+                  Summer Escape – Enjoy 15% Off
                 </h3>
                 <p
                   className="text-gray-800 text-lg"
                   style={{ fontFamily: "var(--font-lora)" }}
                 >
-                  Celebrate the grand opening of May Blossom Spa with us! Enjoy
-                  15% off all services from July 9 to July 31 as we welcome you
-                  to experience relaxation and rejuvenation in our new space.
+                  Treat yourself this summer at May Blossom Spa! Enjoy 15% off
+                  all services from July 9 to July 31. Relax, refresh, and make
+                  the most of the season with us.
                 </p>
               </motion.div>
 

@@ -48,24 +48,25 @@ export default function Home() {
 
   const cards = [
     {
-      title: "Summer Specials",
-      headline: "Chill vibes, hot deals",
-      description:
-        "Enjoy exclusive summer discounts on your favorite experiences. Limited time only.",
-      image: "/images/card-image1.jpg",
-    },
-    {
       title: "Group Massage",
       headline: "Relax Together, Save Together",
       description:
-        "Our spacious facility can accommodate group massages for up to 15 people. Groups of 5 or more enjoy a 10% discount—perfect for friends, families, and coworkers. Come unwind, bond, and feel rejuvenated together!",
-      image: "/images/card-image2.jpeg",
+        "Our spacious facility can accommodate group massages for up to 15 people. Groups of 4 or more enjoy a 10% discount—perfect for friends, families, and coworkers. Come unwind, bond, and feel rejuvenated together!",
+      image: "/images/card-image1.jpg",
     },
     {
-      title: "Dining Delights",
-      headline: "Flavors worth savoring",
+      title: "Insurance Covered",
+      headline: "Your Massage May Be Fully Covered – No Extra Cost to You",
       description:
-        "Discover the best local cuisines with our hand-picked dining options.",
+        "Enjoy professional massage therapy covered by your insurance. Book now and relax without the stress.",
+      image: "/images/card-image2.jpeg",
+    },
+
+    {
+      title: "Package Deals",
+      headline: "More Value, More Relaxation",
+      description:
+        "Enjoy bonus value when you buy packages: Buy $500, get $50 free. Buy $1,000, get $130. Buy $2,000, get $300! Invest in your wellness and save more.",
       image: "/images/card-image3.jpeg",
     },
   ];
